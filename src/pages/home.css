@@ -7,9 +7,10 @@
 .home-section-event {
   border-left: 0;
   border-bottom: 2px solid var(--shadow-color);
+  background-color: #ddd;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 1200px) {
   .home-container {
     gap: 32px;
   }
@@ -20,47 +21,47 @@
   }
 
   .home-section-event {
+    background-color: #ddd;
     width: 75%;
-    
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 1200px) {
   .home-section-list {
-    order:3;
+    order: 3;
     width: 100%;
-    position:relative;
+    position: relative;
     text-align: center;
     padding: auto;
   }
 
-  html, body {
+  html,
+  body {
     overflow: hidden;
   }
 
   .home-section-event {
-    order:2;
-    position:absolute;
-    bottom:0px;
+    order: 2;
+    position: absolute;
+    bottom: 0px;
     padding-top: 0px;
     margin-top: 0px;
-    background-color: #ddd;
     width: 100%;
   }
 }
 
 .pageHeader {
-  order:1;
+  order: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px; 
+  padding: 20px;
   overflow: hidden;
 }
 
 .arrowBtn {
   background: lightgray;
-  font-size:large;
+  font-size: large;
   text-decoration: none;
   display: inline-block;
   padding: 8px 16px;
@@ -82,7 +83,6 @@
   background-color: white;
   position: fixed;
   height: 100%;
-  overflow: auto;
 }
 
 .sidebar a {
