@@ -49,13 +49,16 @@ export const HomePage: FC = () => {
   return (
     <div className="home-container">
       <div className="home-section-list">
-        <h1>Welcome to the event page</h1>
-        <select className="countryDropdown" value={country} onChange={(event) => onCountryChange(event)}>
-          <option value="US">United States</option>
-          <option value="DE">Germany</option>
-          <option value="NO">Norway</option>
-          <option value="DK">Denmark</option>
-        </select>
+        <div className="home-section-heading">
+          <h1>Welcome to the event page</h1>
+          <Link to="/favorites">Goto my favorites</Link>
+          <select className="countryDropdown" value={country} onChange={(event) => onCountryChange(event)}>
+            <option value="US">United States</option>
+            <option value="DE">Germany</option>
+            <option value="NO">Norway</option>
+            <option value="DK">Denmark</option>
+          </select>
+        </div>
 
         <div className="pageHeader">
           <Button disabled={page === 0} onClick={() => onPageChange(Math.max(page - 1, 0))}>
