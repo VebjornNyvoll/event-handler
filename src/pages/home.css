@@ -1,0 +1,28 @@
+.home-container {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 16px;
+
+  min-height: 100vh;
+}
+
+.home-section-event {
+  border-left: 0;
+  border-bottom: 2px solid var(--shadow-color);
+}
+
+@media (min-width: 640px) {
+  .home-container {
+    flex-direction: row;
+  }
+
+  .home-section-list {
+    width: 25%;
+  }
+
+  .home-section-event {
+    width: 75%;
+    border-left: 2px solid var(--shadow-color);
+    border-bottom: 0;
+  }
+}

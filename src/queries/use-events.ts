@@ -7,7 +7,7 @@ export type UseEventOptions = {
   page?: number;
 };
 
-export const useEvents = ({ country = 'US', page = 0 }: UseEventOptions) => {
+export const useEvents = ({ country = 'DE', page = 0 }: UseEventOptions) => {
   const [maxPages, setMaxPages] = useState(0);
   const { data, isLoading, isInitialLoading, ...query } = useQuery({
     queryFn: async ({ signal }) => {
@@ -26,7 +26,7 @@ export const useEvents = ({ country = 'US', page = 0 }: UseEventOptions) => {
       setMaxPages(json.page.totalPages - 1);
       return json;
     },
-    queryKey: ['events', page],
+    queryKey: ['events', country, page],
   });
 
   const events = useMemo(() => {
