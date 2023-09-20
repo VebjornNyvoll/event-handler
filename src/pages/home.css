@@ -1,8 +1,6 @@
 .home-container {
   display: flex;
-  flex-direction: column-reverse;
   gap: 16px;
-
   min-height: 100vh;
 }
 
@@ -13,7 +11,7 @@
 
 @media (min-width: 640px) {
   .home-container {
-    flex-direction: row;
+    gap: 32px;
   }
 
   .home-section-list {
@@ -23,22 +21,46 @@
 
   .home-section-event {
     width: 75%;
-    border-left: 2px solid var(--shadow-color);
-    border-bottom: 0;
+    
+  }
+}
+
+@media (max-width: 640px) {
+  .home-section-list {
+    order:3;
+    width: 100%;
+    position:relative;
+    text-align: center;
+    padding: auto;
+  }
+
+  html, body {
+    overflow: hidden;
+  }
+
+  .home-section-event {
+    order:2;
+    position:fixed;
+    padding-top: 0px;
+    margin-top: 0px;
+    background-color: #ddd;
+    width: 100%;
+
   }
 }
 
 .pageHeader {
+  order:1;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px; /* Add padding for spacing */
+  padding: 20px; 
+  overflow: hidden;
 }
 
-/*next and previous button design*/
 .arrowBtn {
   background: lightgray;
-
+  font-size:large;
   text-decoration: none;
   display: inline-block;
   padding: 8px 16px;
@@ -53,8 +75,6 @@
   cursor: pointer;
 }
 
-
-/* The side navigation menu */
 .sidebar {
   margin: 0;
   padding: 0;
@@ -65,7 +85,6 @@
   overflow: auto;
 }
 
-/* Sidebar links */
 .sidebar a {
   display: block;
   color: black;

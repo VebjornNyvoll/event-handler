@@ -56,12 +56,12 @@ export const EventPage: FC = () => {
   }, [params.eventId, favorites.length]);
 
   const imgUrl: string = eventData?.images?.[0]?.url ? eventData.images[0].url : 'No image found';
-  const startDate: string = eventData?.dates?.start?.localDate ? eventData.dates.start.localDate : 'No date found';
-  const startTime: string = eventData?.dates?.start?.localTime ? eventData.dates.start.localTime : 'No time found';
-  const category: string = eventData?.classifications?.[0].segment?.name ? eventData.classifications[0].segment.name : 'No category found';
-  const promoter: string = eventData?.promoter?.name ? eventData.promoter.name : 'No promoter found';
-  const price: string = eventData?.priceRanges?.[0].min ? eventData.priceRanges[0].min : 'No price found';
-  const venue: string = eventData?._embedded?.venues?.[0].name ? eventData._embedded.venues[0].name : 'No venue found';
+  const startDate: string = eventData?.dates?.start?.localDate ? 'Start date: ' + eventData.dates.start.localDate : 'Start date unknown';
+  const startTime: string = eventData?.dates?.start?.localTime ? 'Start time: ' + eventData.dates.start.localTime : 'Start time unknown';
+  const category: string = eventData?.classifications?.[0].segment?.name ? 'Category: ' + eventData.classifications[0].segment.name : 'Category unknown';
+  const promoter: string = eventData?.promoter?.name ? 'Promoter: ' + eventData.promoter.name : 'Promoter unknown';
+  const price: string = eventData?.priceRanges?.[0].min ? 'Tickets from: ' + eventData.priceRanges[0].min : 'Price unknown';
+  const venue: string = eventData?._embedded?.venues?.[0].name ? 'Venue: ' + eventData._embedded.venues[0].name : 'Venue unknown';
 
   console.log(data);
 
@@ -81,12 +81,12 @@ export const EventPage: FC = () => {
             type="checkbox"
           />
           <span>Set favorite</span>
-          <p>Start date: {startDate}</p>
-          <p>Start time (local): {startTime}</p>
-          <p>Genre: {category}</p>
-          <p>Price: {price}</p>
-          <p>Venue: {venue}</p>
-          <p>Promoter: {promoter}</p>
+          <p>{startDate}</p>
+          <p>{startTime}</p>
+          <p>{price}</p>
+          <p className='extraInfo'>{category}</p>
+          <p className='extraInfo'>{venue}</p>
+          <p className='extraInfo'>{promoter}</p>
           <button
             onClick={() =>
               navigate(
