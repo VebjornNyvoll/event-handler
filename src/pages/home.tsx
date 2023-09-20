@@ -76,7 +76,7 @@ export const HomePage: FC = () => {
         )}
       </div>
       <div className="home-section-event">
-        {!params.eventId && <h2>Select an event on the left side</h2>}
+        {!params.eventId && <h2>Select an event from the list</h2>}
         <Outlet />
       </div>
     </div>

@@ -40,7 +40,8 @@
 
   .home-section-event {
     order:2;
-    position:fixed;
+    position:absolute;
+    bottom:0px;
     padding-top: 0px;
     margin-top: 0px;
     background-color: #ddd;

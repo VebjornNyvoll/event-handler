@@ -1,6 +1,8 @@
 .event-page {
   min-height: 100%;
   padding-left: 2%;
+  align-items: center;
+  
 }
 
 img {
