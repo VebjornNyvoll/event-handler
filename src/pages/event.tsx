@@ -78,7 +78,7 @@ export const EventPage: FC = () => {
       ) : (
         <div>
           <div className="actions">
-            <Link to={`/${searchParams}`}>Go back</Link>
+            <Link to={`/${searchParams.toString()}`}>Go back</Link>
             <div>
               <input
                 ref={inputRef}

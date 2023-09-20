@@ -18,4 +18,14 @@ module.exports = {
     project: ['tsconfig.json', 'tsconfig.node.json', 'tsconfig.eslint.json'],
     tsconfigRootDir: __dirname,
   },
+
+  // We disabled these rules because the api only returns any
+  rules: {
+    '@typescript-eslint/no-unsafe-return': 'off',
+    '@typescript-eslint/no-unsafe-assignment': 'off',
+    '@typescript-eslint/no-unsafe-argument': 'off',
+    '@typescript-eslint/no-unsafe-member-access': 'off',
+    '@typescript-eslint/no-unsafe-call': 'off',
+    '@typescript-eslint/no-explicit-any': 'off'
+  }
 };

@@ -80,7 +80,7 @@ export const HomePage: FC = () => {
           <ul className="home-section-list sidebar">
             {events.map((event: any) => (
               <li key={event.id}>
-                <Link to={`/${event.id}?${searchParams}`}>
+                <Link to={`/${event.id}?${searchParams.toString()}`}>
                   {event.name}
                   {favorites.includes(event.id) && '⭐'}
                 </Link>
