@@ -2,12 +2,11 @@
   min-height: 100%;
   padding-left: 2%;
   align-items: center;
-  
 }
 
 img {
-  width: 350px;
-  height: 150px;
+  width: 700px;
+  height: 300px;
 }
 
 .eventHeader {
@@ -21,8 +20,7 @@ img {
   flex: 1;
 }
 
-@media screen and (max-width: 640px) {
-
+@media screen and (max-width: 1200px) {
   img {
     width: 250px;
     height: 125px;
@@ -30,20 +28,29 @@ img {
   .eventHeader {
     font-size: 1.5rem;
   }
-  
+
   .extraInfo {
     display: none;
   }
 }
 
-.close {
-  font-size: small;
-  position: relative;
-  top: -200px;
-  height: 20px;
-  left: 360px;
-  text-decoration: none;
-}
-.close:hover{
+.close:hover {
   background-color: lightcoral;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* https://stackoverflow.com/a/10415275 */
+.checkbox {
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(1.5); /* IE */
+  -moz-transform: scale(1.5); /* FF */
+  -webkit-transform: scale(1.5); /* Safari and Chrome */
+  -o-transform: scale(1.5); /* Opera */
+  transform: scale(1.5);
+  margin-right: 4px;
 }

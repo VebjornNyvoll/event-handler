@@ -9,7 +9,7 @@ export type UseEventOptions = {
 
 export const useEvents = ({ country = 'DE', page = 0 }: UseEventOptions) => {
   const [maxPages, setMaxPages] = useState(0);
-  const { data, isLoading, isInitialLoading, ...query } = useQuery({
+  const { data, isLoading, ...query } = useQuery({
     queryFn: async ({ signal }) => {
       const searchParams = new URLSearchParams([
         ['apikey', apiKey],
@@ -18,7 +18,7 @@ export const useEvents = ({ country = 'DE', page = 0 }: UseEventOptions) => {
         ['size', '20'],
         ['sort', 'date,desc'],
       ]);
-      const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events?${searchParams}`, {
+      const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events?${searchParams.toString()}`, {
         signal,
       });
       const json = await response.json();

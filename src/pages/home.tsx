@@ -4,6 +4,7 @@ import './home.css';
 import { Link, Outlet, useParams, useSearchParams } from 'react-router-dom';
 import { useFavoritesContext } from '../favorites-provider.tsx';
 import { Spinner } from '../components/spinner.tsx';
+import { Button } from '../components/button.tsx';
 
 type Params = { eventId?: string };
 
@@ -49,33 +50,46 @@ export const HomePage: FC = () => {
     <div className="home-container">
       <div className="home-section-list">
         <h1>Welcome to the event page</h1>
-        <select className='countryDropdown' value={country} onChange={(event) => onCountryChange(event)}>
+        <select className="countryDropdown" value={country} onChange={(event) => onCountryChange(event)}>
           <option value="US">United States</option>
           <option value="DE">Germany</option>
           <option value="NO">Norway</option>
           <option value="DK">Denmark</option>
         </select>
 
-        <div className='pageHeader'>
-          <button className='arrowBtn' onClick={() => onPageChange(Math.max(page - 1, 0))}> &#8249; </button> 
-          <h1>Page {page+1}/{maxPages+1}</h1>
-          <button className='arrowBtn' onClick={() => onPageChange(Math.min(page + 1, maxPages))}> &#8250; </button>
+        <div className="pageHeader">
+          <Button disabled={page === 0} onClick={() => onPageChange(Math.max(page - 1, 0))}>
+            {' '}
+            &#8249;{' '}
+          </Button>
+          <h1>
+            Page {page + 1}/{maxPages + 1}
+          </h1>
+          <Button disabled={page === maxPages} onClick={() => onPageChange(Math.min(page + 1, maxPages))}>
+            {' '}
+            &#8250;{' '}
+          </Button>
         </div>
 
         {isLoading ? (
           <Spinner />
         ) : (
-          <ul className = "home-section-list sidebar">
+          <ul className="home-section-list sidebar">
             {events.map((event: any) => (
               <li key={event.id}>
-                <Link to={`/${event.id}?${searchParams}`}>{event.name}{favorites.includes(event.id) && '⭐'}</Link>
+                <Link to={`/${event.id}?${searchParams.toString()}`}>
+                  {event.name}
+                  {favorites.includes(event.id) && '⭐'}
+                </Link>
               </li>
             ))}
           </ul>
         )}
       </div>
       <div className="home-section-event">
-        {!params.eventId && <h2>Select an event from the list</h2>}
+        {!params.eventId && (
+          <h2 style={{ paddingLeft: 16 }}>Please select an event from the menu to see full information</h2>
+        )}
         <Outlet />
       </div>
     </div>
