@@ -10,6 +10,12 @@
   background-color: #ddd;
 }
 
+.home-section-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 @media (min-width: 1200px) {
   .home-container {
     gap: 32px;
