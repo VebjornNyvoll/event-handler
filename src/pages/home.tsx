@@ -4,6 +4,7 @@ import './home.css';
 import { Link, Outlet, useParams, useSearchParams } from 'react-router-dom';
 import { useFavoritesContext } from '../favorites-provider.tsx';
 import { Spinner } from '../components/spinner.tsx';
+import { Button } from '../components/button.tsx';
 
 type Params = { eventId?: string };
 
@@ -57,21 +58,17 @@ export const HomePage: FC = () => {
         </select>
 
         <div className="pageHeader">
-          <button className="arrowBtn" disabled={page === 0} onClick={() => onPageChange(Math.max(page - 1, 0))}>
+          <Button disabled={page === 0} onClick={() => onPageChange(Math.max(page - 1, 0))}>
             {' '}
             &#8249;{' '}
-          </button>
+          </Button>
           <h1>
             Page {page + 1}/{maxPages + 1}
           </h1>
-          <button
-            className="arrowBtn"
-            disabled={page === maxPages}
-            onClick={() => onPageChange(Math.min(page + 1, maxPages))}
-          >
+          <Button disabled={page === maxPages} onClick={() => onPageChange(Math.min(page + 1, maxPages))}>
             {' '}
             &#8250;{' '}
-          </button>
+          </Button>
         </div>
 
         {isLoading ? (

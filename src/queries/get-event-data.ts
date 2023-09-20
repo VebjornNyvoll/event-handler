@@ -1,6 +1,6 @@
-import {useQuery} from '@tanstack/react-query';
-import {apiKey} from '../query-provider.tsx';
-import {useMemo} from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { apiKey } from '../query-provider.tsx';
+import { useMemo } from 'react';
 
 export const getEventData = (eventId: string) => {
   const { data, isLoading, ...query } = useQuery({
