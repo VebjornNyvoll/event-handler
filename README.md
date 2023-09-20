@@ -4,6 +4,11 @@ This application grabs events from the Ticketmaster Discovery API. The user can 
 
 The app's design is inspired by good old MS-DOS, Minecraft and Windows 95, now fully reimagined in a responsive React-based application!
 
+The website is available on http://it2810-35.idi.ntnu.no/project1/
+
+When you navigate using the above link, refreshing isn;t going to work because React Router redirects to absolute urls,
+also Apache2 doesn't know that e.g /favorites is a page because it's not a html file on the server
+
 # User setup
 
 ## Adding environment variables
