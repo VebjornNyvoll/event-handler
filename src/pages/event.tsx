@@ -6,6 +6,33 @@ import { useFavoritesContext } from '../favorites-provider.tsx';
 import './event.css';
 
 type Params = { eventId: string };
+type Event = {
+  name: string;
+  images: { url: string }[];
+  dates: {
+    start: {
+      localDate: string;
+      localTime: string;
+    }
+  }
+  classifications: {
+    segment: {
+      name: string;
+    }
+  }[];
+  promoter: {
+    name: string;
+  };
+  priceRanges: {
+    min: string;
+  }[];
+  _embedded: {
+    venues: {
+      name: string;
+    }[];
+  };
+};
+
 
 export const EventPage: FC = () => {
   const params = useParams<Params>();
@@ -14,6 +41,8 @@ export const EventPage: FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const { favorites, setFavorites } = useFavoritesContext();
   const { data, isLoading } = useEventById({ eventId: params.eventId! });
+  const eventData: Event = data as Event;
+  
   const onInputChange = useCallback(() => {
     if (inputRef.current === null) {
       return;
@@ -26,13 +55,25 @@ export const EventPage: FC = () => {
     }
   }, [params.eventId, favorites.length]);
 
+  const imgUrl: string = eventData?.images?.[0]?.url ? eventData.images[0].url : 'No image found';
+  const startDate: string = eventData?.dates?.start?.localDate ? eventData.dates.start.localDate : 'No date found';
+  const startTime: string = eventData?.dates?.start?.localTime ? eventData.dates.start.localTime : 'No time found';
+  const category: string = eventData?.classifications?.[0].segment?.name ? eventData.classifications[0].segment.name : 'No category found';
+  const promoter: string = eventData?.promoter?.name ? eventData.promoter.name : 'No promoter found';
+  const price: string = eventData?.priceRanges?.[0].min ? eventData.priceRanges[0].min : 'No price found';
+  const venue: string = eventData?._embedded?.venues?.[0].name ? eventData._embedded.venues[0].name : 'No venue found';
+
+  console.log(data);
+
   return (
     <div className="event-page">
       {isLoading && !data ? (
         <Spinner />
       ) : (
         <div>
-          <h1>{data.name}</h1>
+          <h1 className='eventHeader'>{eventData.name ? eventData.name : 'Event name not found'}</h1>
+          <img src={imgUrl} />
+          <p></p>
           <input
             ref={inputRef}
             checked={favorites.includes(params.eventId!)}
@@ -40,6 +81,12 @@ export const EventPage: FC = () => {
             type="checkbox"
           />
           <span>Set favorite</span>
+          <p>Start date: {startDate}</p>
+          <p>Start time (local): {startTime}</p>
+          <p>Genre: {category}</p>
+          <p>Price: {price}</p>
+          <p>Venue: {venue}</p>
+          <p>Promoter: {promoter}</p>
           <button
             onClick={() =>
               navigate(

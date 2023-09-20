@@ -1,6 +1,19 @@
 .event-page {
   display: flex;
   height: 100%;
+  padding-left: 2%;
+}
+
+img {
+  width: 350px;
+  height: 150px;
+}
+
+.eventHeader {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
 }
 
 .event-page > * {
