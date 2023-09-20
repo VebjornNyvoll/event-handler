@@ -41,34 +41,35 @@ export const HomePage: FC = () => {
       newParams.set('country', event.target.value);
       return newParams;
     });
+    setPage(0);
   };
 
   const { events, maxPages, isLoading } = useEvents({ page, country });
-
   return (
     <div className="home-container">
       <div className="home-section-list">
         <h1>Welcome to the event page</h1>
-        <button onClick={() => onPageChange(Math.min(page + 1, maxPages))}>Get next page</button>
-        <button onClick={() => onPageChange(Math.max(page - 1, 0))}>Get previous page</button>
-        <select value={country} onChange={(event) => onCountryChange(event)}>
+        <select className='countryDropdown' value={country} onChange={(event) => onCountryChange(event)}>
           <option value="US">United States</option>
           <option value="DE">Germany</option>
           <option value="NO">Norway</option>
           <option value="DK">Denmark</option>
         </select>
 
-        <h1>
-          On page {page}/{maxPages}
-        </h1>
+        <div className='pageHeader'>
+          <button className='arrowBtn' onClick={() => onPageChange(Math.max(page - 1, 0))}> &#8249; </button> 
+          <h1>Page {page+1}/{maxPages+1}</h1>
+          <button className='arrowBtn' onClick={() => onPageChange(Math.min(page + 1, maxPages))}> &#8250; </button>
+        </div>
+
         {isLoading ? (
           <Spinner />
         ) : (
-          <ul>
+          <ul className = "home-section-list sidebar">
             {events.map((event: any) => (
               <li key={event.id}>
-                <p>{event.name}</p> <Link to={`/${event.id}?${searchParams}`}>(info)</Link>
-                {favorites.includes(event.id) && '⭐'}
+                <Link to={`/${event.id}?${searchParams}`}>{event.name}{favorites.includes(event.id) && '⭐'}</Link>
+                
               </li>
             ))}
           </ul>
