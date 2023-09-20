@@ -1,0 +1,8 @@
+.event-page {
+  display: flex;
+  height: 100%;
+}
+
+.event-page > * {
+  flex: 1;
+}

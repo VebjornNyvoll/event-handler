@@ -1,0 +1,9 @@
+html {
+  font-family: 'MinecraftiaRegular', serif, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --shadow-color: #5f6368;
+}
