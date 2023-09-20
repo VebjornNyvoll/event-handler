@@ -87,7 +87,7 @@ export const EventPage: FC = () => {
           <p className='extraInfo'>{category}</p>
           <p className='extraInfo'>{venue}</p>
           <p className='extraInfo'>{promoter}</p>
-          <button
+          <button className='close'
             onClick={() =>
               navigate(
                 {

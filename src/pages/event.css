@@ -35,3 +35,15 @@ img {
     display: none;
   }
 }
+
+.close {
+  font-size: small;
+  position: relative;
+  top: -200px;
+  height: 20px;
+  left: 360px;
+  text-decoration: none;
+}
+.close:hover{
+  background-color: lightcoral;
+}

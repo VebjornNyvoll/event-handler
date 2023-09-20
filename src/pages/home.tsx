@@ -69,7 +69,6 @@ export const HomePage: FC = () => {
             {events.map((event: any) => (
               <li key={event.id}>
                 <Link to={`/${event.id}?${searchParams}`}>{event.name}{favorites.includes(event.id) && '⭐'}</Link>
-                
               </li>
             ))}
           </ul>
