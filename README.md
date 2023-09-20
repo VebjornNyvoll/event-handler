@@ -41,4 +41,9 @@ We decided to prioritize other user stories / issues as they still fulfill the f
 We decided to try out different types of tests in this project as suggested by the subject manager on Piazza.
 Therefore our tests consist of a snapshot test, mock tests and a user interface test as well as a generic test to ensure Vitest is running properly. 
 
-
+# Supported devices
+We've tested the application on the following devices/browsers:
+1. Windows PC (Acer Swift 3) running Google Chrome
+2. iPhone 14 Pro Max running Google Chrome, Safari and Messenger Browser
+3. iPhone XR running Google Chrome
+4. Linux PC running Google Chrome
