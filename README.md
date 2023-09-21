@@ -1,37 +1,61 @@
-# React + TypeScript + Vite
+# Team 35 Project 1 - Event Handler!
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This application grabs events from the Ticketmaster Discovery API. The user can select a country which they want to see events for and can click on an event to get more information about it. The user may also favourite an event which gives it a nifty star in the event list!
 
-Currently, two official plugins are available:
+The app's design is inspired by good old MS-DOS, Minecraft and Windows 95, now fully reimagined in a responsive React-based application!
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The website is available on http://it2810-35.idi.ntnu.no/project1/
+
+When you navigate using the above link, refreshing isn;t going to work because React Router redirects to absolute urls,
+also Apache2 doesn't know that e.g /favorites is a page because it's not a html file on the server
+
+# User setup
 
 ## Adding environment variables
 
-To use the app you need a ticketmaster API key. To get a key you need to sign up for the Ticketmaster API. Then put the key into a `.env` file.
+To use the app you need a ticketmaster API key. To get a key you need to go to the Ticketmaster Discovery API Explorer page. Then put the key into a `.env` file in the root folder of the project.
+
+If you're unable to get a key of your own, you may use this one: 7elxdku9GGG5k8j0Xm8KWdANDgecHMV0
 
 ```
 # file: .env
 
 VITE_TICKETMASTER_KEY=your_api_key
+
 ```
 
-## Expanding the ESLint configuration
+## Completed user stories / issues
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. As a user I want to see all events for a given country to see what is happening
 
-- Configure the top-level `parserOptions` property like this:
+2. As a user I want to be able to mark an event as favourite to find it again later
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+3. As a user I want to be able to find all events I have marked as favourite to find the events that interest me
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+4. As a user I want to see information about a specific event to decide if it's worth going to
+
+   6\. Add React Router
+
+   7\. Add TanStack Query
+
+   8\. Configure ESLint
+
+## Uncompleted user story
+
+5. As a user I want to find all events in a given radius around me to see what is nearby
+
+We decided to prioritize other user stories / issues as they still fulfill the functional requirements for project 1 and we did not consider this feature essential.
+
+# Testing
+
+We decided to try out different types of tests in this project as suggested by the subject manager on Piazza.
+Therefore our tests consist of a snapshot test, mock tests and a user interface test as well as a generic test to ensure Vitest is running properly.
+
+# Supported devices
+
+We've tested the application on the following devices/browsers:
+
+1. Windows PC (Acer Swift 3) running Google Chrome
+2. iPhone 14 Pro Max running Google Chrome, Safari and Messenger Browser
+3. iPhone XR running Google Chrome
+4. Linux PC running Google Chrome

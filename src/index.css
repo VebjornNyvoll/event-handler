@@ -1,7 +1,9 @@
 html {
-  font-family: 'MinecraftiaRegular', serif, sans-serif;
+  font-family: 'MinecraftiaRegular', monospace;
   font-weight: normal;
   font-style: normal;
+
+  font-size: 1.2rem;
 }
 
 :root {

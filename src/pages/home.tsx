@@ -4,6 +4,7 @@ import './home.css';
 import { Link, Outlet, useParams, useSearchParams } from 'react-router-dom';
 import { useFavoritesContext } from '../favorites-provider.tsx';
 import { Spinner } from '../components/spinner.tsx';
+import { Button } from '../components/button.tsx';
 
 type Params = { eventId?: string };
 
@@ -41,41 +42,57 @@ export const HomePage: FC = () => {
       newParams.set('country', event.target.value);
       return newParams;
     });
+    setPage(0);
   };
 
   const { events, maxPages, isLoading } = useEvents({ page, country });
-
   return (
     <div className="home-container">
       <div className="home-section-list">
-        <h1>Welcome to the event page</h1>
-        <button onClick={() => onPageChange(Math.min(page + 1, maxPages))}>Get next page</button>
-        <button onClick={() => onPageChange(Math.max(page - 1, 0))}>Get previous page</button>
-        <select value={country} onChange={(event) => onCountryChange(event)}>
-          <option value="US">United States</option>
-          <option value="DE">Germany</option>
-          <option value="NO">Norway</option>
-          <option value="DK">Denmark</option>
-        </select>
+        <div className="home-section-heading">
+          <h1>Welcome to the event page</h1>
+          <Link to="/favorites">Goto my favorites</Link>
+          <select className="countryDropdown" value={country} onChange={(event) => onCountryChange(event)}>
+            <option value="US">United States</option>
+            <option value="DE">Germany</option>
+            <option value="NO">Norway</option>
+            <option value="DK">Denmark</option>
+          </select>
+        </div>
 
-        <h1>
-          On page {page}/{maxPages}
-        </h1>
+        <div className="pageHeader">
+          <Button disabled={page === 0} onClick={() => onPageChange(Math.max(page - 1, 0))}>
+            {' '}
+            &#8249;{' '}
+          </Button>
+          <h1>
+            Page {page + 1}/{maxPages + 1}
+          </h1>
+          <Button disabled={page === maxPages} onClick={() => onPageChange(Math.min(page + 1, maxPages))}>
+            {' '}
+            &#8250;{' '}
+          </Button>
+        </div>
+
         {isLoading ? (
           <Spinner />
         ) : (
-          <ul>
+          <ul className="home-section-list sidebar">
             {events.map((event: any) => (
               <li key={event.id}>
-                <p>{event.name}</p> <Link to={`/${event.id}?${searchParams}`}>(info)</Link>
-                {favorites.includes(event.id) && '⭐'}
+                <Link to={`/${event.id}?${searchParams.toString()}`}>
+                  {event.name}
+                  {favorites.includes(event.id) && '⭐'}
+                </Link>
               </li>
             ))}
           </ul>
         )}
       </div>
       <div className="home-section-event">
-        {!params.eventId && <h2>Select an event on the left side</h2>}
+        {!params.eventId && (
+          <h2 style={{ paddingLeft: 16 }}>Please select an event from the menu to see full information</h2>
+        )}
         <Outlet />
       </div>
     </div>
