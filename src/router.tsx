@@ -12,4 +12,7 @@ export const router = createBrowserRouter(
       </Route>
     </>,
   ),
+  {
+    basename: '/project1',
+  },
 );
