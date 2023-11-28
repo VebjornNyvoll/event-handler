@@ -59,3 +59,25 @@ We've tested the application on the following devices/browsers:
 2. iPhone 14 Pro Max running Google Chrome, Safari and Messenger Browser
 3. iPhone XR running Google Chrome
 4. Linux PC running Google Chrome
+
+## Response to feedback
+
+Since the original submission, we have tried to fulfill all reasonable feedback messages that we received. To sum up, we
+have implemented the following changes and fixes:
+
+- The website is now much prettier
+- It's responsive for web devices too, and elements don't magically disappear or overlap on eachother.
+- When clicking an event on mobile or small devices, it automatically scrolls down
+- The correct base path is now used
+- Logic is now split into EventListPage and EventFallbackPage elements and more advanced used of React Router is used.
+
+There were also some things that were significantly harder to do, mostly due to external limitations. These are as
+follows:
+
+- We received a few comments about not having direct navigation between resources (events) on the per-event page. This
+  proved rather difficult to implement, as the Ticketmaster API uses cursor based navigation, which makes it rather
+  impossible to determine what the event id for the next and previous events are (those are only returned in the entire)
+  listing call. See cursor based pagination: https://slack.engineering/evolving-api-pagination-at-slack/
+- There were also a few comments about using sessionStorage. We are already using localStorage for the favorites, and
+  storing filter options in the URL using search parameters. This means it's significantly easier to find the same
+  search result after restarting the browser. We believe this is a better fit.

@@ -1,11 +1,21 @@
 html {
-  font-family: 'MinecraftiaRegular', monospace;
-  font-weight: normal;
-  font-style: normal;
-
-  font-size: 1.2rem;
+  font-family: 'Poppins', monospace;
+  padding: 0.5rem;
 }
 
 :root {
   --shadow-color: #5f6368;
+}
+
+.content-container {
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-radius: 0.2rem;
+}
+
+.content-heading {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-top: 0.1rem;
+  margin-bottom: 0.15rem;
 }

@@ -15,7 +15,7 @@ export const useEvents = ({ country = 'DE', page = 0 }: UseEventOptions) => {
         ['apikey', apiKey],
         ['countryCode', country],
         ['page', page.toString()],
-        ['size', '20'],
+        ['size', '10'],
         ['sort', 'date,desc'],
       ]);
       const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events?${searchParams.toString()}`, {
