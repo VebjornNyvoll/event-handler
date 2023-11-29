@@ -24,6 +24,7 @@ type Event = {
     name: string;
   };
   priceRanges: {
+    currency: string;
     min: string;
   }[];
   _embedded: {
@@ -68,6 +69,20 @@ export const EventPage: FC = () => {
     year: 'numeric',
   });
 
+  function currencySwitch() {
+    switch(eventData?.priceRanges[0]?.currency) {
+      case 'USD':
+        return '$' + eventData.priceRanges[0].min;
+      case 'NOK':
+      case 'DKK':
+        return eventData.priceRanges[0].min + 'kr';
+      case 'EUR':
+        return '€' + eventData.priceRanges[0].min;
+      default:
+        return eventData.priceRanges[0].min;
+    }
+  }
+
   const imgUrl: string = eventData?.images?.[0]?.url ? eventData.images[0].url : 'No image found';
   const startDate: string = eventData?.dates?.start?.localDate
     ? `Start date: ${formatter.format(new Date(eventData.dates.start.localDate))}`
@@ -80,7 +95,7 @@ export const EventPage: FC = () => {
     : 'Category unknown';
   const promoter: string = eventData?.promoter?.name ? `Promoter: ${eventData.promoter.name}` : 'Promoter unknown';
   const price: string = eventData?.priceRanges?.[0]?.min
-    ? `Tickets from ${eventData.priceRanges[0].min}$`
+    ? `Tickets from ${currencySwitch()}`
     : 'Price unknown';
   const venue: string = eventData?._embedded?.venues?.[0]?.name
     ? `Venue: ${eventData._embedded.venues[0].name}`
