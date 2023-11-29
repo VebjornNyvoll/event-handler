@@ -48,7 +48,7 @@ export const EventListPage: FC = () => {
     <div className="event-list-container">
       <div className="content-container event-container">
         <h2 className="content-heading">Events</h2>
-        <p>Welcome to our catalogue of events. Please select a event you like.</p>
+        <p> Please select an event you like.</p>
 
         <div className="event-search-criteria">
           <label className="event-label" htmlFor="country">
