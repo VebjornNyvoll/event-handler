@@ -8,8 +8,6 @@ This application grabs events from the Ticketmaster Discovery API. The user can 
 
 To use the app you need a ticketmaster API key. To get a key you need to go to the Ticketmaster Discovery API Explorer page. Then put the key into a `.env` file in the root folder of the project.
 
-If you're unable to get a key of your own, you may use this one: 7elxdku9GGG5k8j0Xm8KWdANDgecHMV0
-
 ```
 # file: .env
 
